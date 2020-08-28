@@ -36,7 +36,8 @@ function love.keypressed(key)
 						turn = 1 
 					end 
 
-					diagonalWin2(bord)
+
+					diaWin(bord)
 					verticalWin(bord)
 					horizontalWin(bord)
 

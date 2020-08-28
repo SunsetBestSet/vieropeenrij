@@ -35,7 +35,7 @@ function love.keypressed(key)
 					end 
 
 
-					diagonalWin2(bord)
+					diaWin(bord)
 					verticalWin(bord)
 					horizontalWin(bord)
 

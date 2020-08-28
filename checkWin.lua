@@ -1,41 +1,15 @@
-function diagonalWin(field) 
-    local boardHeight = 6
-    for k, v in pairs(field) do
-        dia1 = ""
-        for j = k, boardHeight, 1 do
-            dia1 = dia1 .. field[j][j - k + 1]
-        end
-        
-        if string.match(dia1, '1111') then
-            print("blauw heeft gewonnen")
-        elseif string.match(dia1, '2222') then
-            print("rood heeft gewonnen")
-        end
-
-        dia2 = ''
-        for j = k, boardHeight, 1 do
-            dia2 = dia2 .. field[j - k + 1][j]
-        end
-        
-        if string.match(dia2, '1111') then
-            print("blauw heeft gewonnen")
-        elseif string.match(dia2, '2222') then
-            print("rood heeft gewonnen")
-        end
-    end
-end
-
-function diagonalWin2(field) 
+function diaWin(field) 
     local boardHeight = 7
-    for k, v in pairs(field) do
-        local x = k
+    for x = 2, #field + 2, 1 do
         local dia1 = ''
 
         if x >= 2 then --anders kan er geen diagonaal zijn
+            local pointer = x
             for y = 1, boardHeight, 1 do --hij gaat hier naar beneden
-                if y ~= boardHeight and x > 0 then
-                    dia1 = dia1 .. field[x][y] -- voegt toe aan de string
-                    x = x - 1 -- 1 naar links
+                if y ~= boardHeight and pointer > 0 then
+                    print(pointer)
+                    if pointer < 8 then dia1 = dia1 .. field[pointer][y] end
+                    pointer = pointer - 1 -- 1 naar links
                 end
             end
         end 
@@ -48,23 +22,22 @@ function diagonalWin2(field)
             print("rood heeft gewonnen dia")
             return
         end
-
-
     end
-    for j = #field, 1, -1 do
-        dia2 = ''
+    
+    for x = #field, -1, -1 do
+        local dia2 = ''
 
-        if j <= 6 then --anders kan er geen diagonaal zijn
+        if x <= 6 then --anders kan er geen diagonaal zijn
+            local pointer = x
             for y = 1, boardHeight, 1 do --hij gaat hier naar beneden
-                if y ~= boardHeight and j > 0 then
-                    print(" j " .. j)
-                    dia2 = dia2 .. field[j][y] -- voegt toe aan de string
-                    j = j - 1 -- 1 naar links
-                    print (dia2)
+                if y ~= boardHeight and pointer > 0 then
+                    print(pointer)
+                    if pointer > 1 and pointer < 8 then dia2 = dia2 .. field[pointer][y] end
+                    pointer = pointer + 1 
                 end
             end
         end 
-
+        
         if string.match(dia2, '1111') then
             print("blauw heeft gewonnen dia")
             return
@@ -74,7 +47,7 @@ function diagonalWin2(field)
             return
         end
     end
-    
+
 end
 
 function verticalWin(field) 

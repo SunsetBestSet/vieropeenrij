@@ -71,11 +71,12 @@ end
 function love.draw()
 	drawBoard()
 	drawWin()
+	drawTurn()
 end
 
 function drawWin()
 	love.graphics.setColor(0, 0, 0)
-	love.graphics.rectangle("fill", 530, 200, 200, 50)
+	love.graphics.rectangle("fill", 530, 200, 250, 50)
 	love.graphics.setColor(1, 1, 1)
 	if win == 1 then
 		love.graphics.print("blauw wint", winFont, 550, 200)
@@ -84,6 +85,16 @@ function drawWin()
 	elseif win == 3 then
 		love.graphics.print( "gelijkspel", winFont, 550, 200)
 
+	end
+end
+function drawTurn()
+	love.graphics.setColor(0, 0, 0)
+	love.graphics.rectangle("fill", 530, 280, 250, 50)
+	love.graphics.setColor(1, 1, 1)
+	if turn == 1 then
+		love.graphics.print("blauw", winFont, 550, 280)
+	else
+		love.graphics.print("rood", winFont, 550, 280)
 	end
 end
 

@@ -36,7 +36,7 @@ function love.keypressed(key)
 						turn = 1 
 					end 
 
-
+					drawCheck()
 					diaWin(bord)
 					verticalWin(bord)
 					horizontalWin(bord)
@@ -60,6 +60,8 @@ function drawWin()
 		love.graphics.print( "blauw wint", 230, 500, 0)
 	elseif win == 2 then
 		love.graphics.print( "rood wint", 230, 500)
+	elseif win == 3 then
+		love.graphics.print( "gelijkspel", 230, 500)
 	end
 end
 
@@ -72,4 +74,13 @@ function drawBoard()
 			love.graphics.rectangle('fill', x * 60, y * 60, 50, 50)
 		end
 	end
+end
+
+function drawCheck()
+	for x, v in pairs(bord) do 
+		for y, w in pairs(bord[x]) do 
+			if w == 0 then return end
+		end
+	end
+	win = 3
 end

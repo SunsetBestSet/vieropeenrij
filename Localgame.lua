@@ -1,7 +1,7 @@
 Localgame = Game:extend()
 
 function Localgame:new()
-	power = true
+	screen = "localgame"
 	self:setupBoard()
 	self.turn = 1
 end

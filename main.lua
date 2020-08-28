@@ -2,23 +2,25 @@ require "checkWin"
 
 function love.load()
 
--- door speler laten bepalen at some point
-bord = {
-	{0, 0, 0, 0, 0, 0},
-	{0, 0, 0, 0, 0, 0},
-	{0, 0, 0, 0, 0, 0},
-	{0, 0, 0, 0, 0, 0},
-	{0, 0, 0, 0, 0, 0},
-	{0, 0, 0, 0, 0, 0},
-	{0, 0, 0, 0, 0, 0},
-}
+	-- door speler laten bepalen at some point
+	bord = {
+		{0, 0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0, 0},
+	}
 
-turn = 1
+	turn = 1
 
-love.graphics.setBackgroundColor(0.5, 0.5, 0.5)
+	love.graphics.setBackgroundColor(0.5, 0.5, 0.5)
 
 
 end
+
+win = 0;
 
 function love.keypressed(key)
 	x = tonumber(key)
@@ -39,6 +41,7 @@ function love.keypressed(key)
 					verticalWin(bord)
 					horizontalWin(bord)
 
+
 					return
 				end 
 			end
@@ -53,9 +56,18 @@ function love.draw()
 	  	love.graphics.print(w, x, 0 + (l-1) * 20)
 	  end
 	end]]
+
 	drawBoard()
+	drawWin()
 end
 
+function drawWin()
+	if win == 1 then
+		love.graphics.print( "blauw wint", 230, 500, 0)
+	elseif win == 2 then
+		love.graphics.print( "rood wint", 230, 500)
+	end
+end
 
 function drawBoard()
 	for x, v in pairs(bord) do 

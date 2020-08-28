@@ -43,22 +43,22 @@ function diagonalWin2(field)
         end 
         
         if string.match(dia1, '1111') then
-            print("blauw heeft gewonnen dia")
+            win = 1
             return
         end
         if string.match(dia1, '2222') then
-            print("rood heeft gewonnen dia")
+            win = 2
             return
         end
 
         dia2 = ''
         
         if string.match(dia2, '1111') then
-            print("blauw heeft gewonnen dia")
+            win = 1
             return
         end
         if string.match(dia2, '2222') then
-            print("rood heeft gewonnen dia")
+            win = 2
             return
         end
     end
@@ -78,7 +78,7 @@ function verticalWin(field)
                 if previousPosition == field[x][y] then
                     verticalWinCounterRed = verticalWinCounterRed + 1
                     if verticalWinCounterRed == 3 then
-                        print("rood heeft gewonnen")
+                        win = 2
                     end
                 end
                 previousPosition = 2
@@ -87,7 +87,7 @@ function verticalWin(field)
                 if previousPosition == field[x][y] then
                     verticalWinCounterBlue = verticalWinCounterBlue + 1
                     if verticalWinCounterBlue == 3 then
-                        print("blauw heeft gewonnen")
+                        win = 1
                     end
                 end
                 previousPosition = 1
@@ -116,7 +116,7 @@ function horizontalWin(field)
                 if previousPosition == field[x][y] then
                     horizontalWinCounterRed = horizontalWinCounterRed + 1 
                     if horizontalWinCounterRed == 3 then
-                        print("rood heeft gewonnen")
+                        win = 2
                     end
                 end
                 previousPosition = 2
@@ -125,7 +125,7 @@ function horizontalWin(field)
                 if previousPosition == field[x][y] then
                     horizontalWinCounterBlue = horizontalWinCounterBlue + 1
                     if horizontalWinCounterBlue == 3 then
-                        print("blauw heeft gewonnen")
+                        win = 1
                     end
                 end
                 previousPosition = 1

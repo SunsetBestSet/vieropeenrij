@@ -27,12 +27,12 @@ end
 
 function diagonalWin2(field) 
     boardHeight = 7
-    for i = 1, boardHeight, 1 do
-        dia1 = ''
-        for j = i, boardHeight, 1 do
-            dia1 = dia1 .. field[j][j - i]
-            print(dia1)
-        end
+    for k, v in pairs(field) do
+        local x, y = k, 1
+        local dia1 = ''
+
+        if x >= 2 then end 
+        
         if string.match(dia1, '1111') then
             print("blauw heeft gewonnen dia")
         end
@@ -41,10 +41,7 @@ function diagonalWin2(field)
         end
 
         dia2 = ''
-        for j = i, boardHeight, 1 do
-            dia2 = dia2 .. field[j - i][j]
-            print(dia2)
-        end
+        
         if string.match(dia2, '1111') then
             print("blauw heeft gewonnen dia")
         end

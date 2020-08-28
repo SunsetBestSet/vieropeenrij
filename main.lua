@@ -1,5 +1,6 @@
 Object = require "classic"
 
+require "Game"
 require "Localgame"
 require "checkWin"
 

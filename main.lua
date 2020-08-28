@@ -50,12 +50,6 @@ function love.keypressed(key)
 end
 
 function love.draw()
-	--[[for k, v in pairs(bord) do
-		x = 0 + (k-1) * 20
-	  for l, w in pairs(bord[k]) do 
-	  	love.graphics.print(w, x, 0 + (l-1) * 20)
-	  end
-	end]]
 
 	drawBoard()
 	drawWin()

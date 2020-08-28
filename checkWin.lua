@@ -8,7 +8,6 @@ function diaWin(field)
             local pointer = x
             for y = 1, boardHeight, 1 do --hij gaat hier naar beneden
                 if y ~= boardHeight and pointer > 0 then
-                    print(pointer)
                     if pointer < 8 then dia1 = dia1 .. field[pointer][y] end
                     pointer = pointer - 1 -- 1 naar links
                 end
@@ -32,7 +31,6 @@ function diaWin(field)
             local pointer = x
             for y = 1, boardHeight, 1 do --hij gaat hier naar beneden
                 if y ~= boardHeight and pointer > 0 then
-                    print(pointer)
                     if pointer > 1 and pointer < 8 then dia2 = dia2 .. field[pointer][y] end
                     pointer = pointer + 1 
                 end

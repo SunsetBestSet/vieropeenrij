@@ -1,5 +1,5 @@
 
-function Game:diaWin(field) 
+function Localgame:diaWin(field) 
     local boardHeight = 7
     for x = 2, #field + 2, 1 do
         local dia1 = ''
@@ -28,7 +28,6 @@ function Game:diaWin(field)
         local dia2 = ''
 
         if x <= 6 then --anders kan er geen diagonaal zijn
-            print("location: " .. x)
             local pointer = x
             for y = 1, boardHeight, 1 do --hij gaat hier naar beneden
                 if y < boardHeight and pointer > 0 and pointer < 8 then
@@ -50,7 +49,7 @@ function Game:diaWin(field)
 
 end
 
-function Game:verticalWin(field) 
+function Localgame:verticalWin(field) 
     local previousPosition = 0
     local boardLenght = 8
     local boardHeight = 7
@@ -88,7 +87,7 @@ function Game:verticalWin(field)
     end
 end
 
-function Game:horizontalWin(field) 
+function Localgame:horizontalWin(field) 
     local previousPosition = 0
     local boardLenght = 8
     local boardHeight = 7

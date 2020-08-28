@@ -1,12 +1,12 @@
-Game = Object:extend()
+Localgame = Object:extend()
 
-function Game:new()
+function Localgame:new()
 	power = true
 	self:setupBoard()
 	self.turn = 1
 end
 
-function Game:setupBoard()
+function Localgame:setupBoard()
 
 	self.bord = {
 		{0, 0, 0, 0, 0, 0},
@@ -22,13 +22,13 @@ function Game:setupBoard()
 
 end
 
-function Game:draw()
+function Localgame:draw()
 	self:drawBoard()
 	self:drawWin()
 	self:drawTurn()
 end
 
-function Game:drawWin()
+function Localgame:drawWin()
 	love.graphics.setColor(0, 0, 0)
 	love.graphics.rectangle("fill", 530, 200, 250, 50)
 	love.graphics.setColor(1, 1, 1)
@@ -40,7 +40,7 @@ function Game:drawWin()
 		love.graphics.print( "gelijkspel", winFont, 550, 200)
 	end
 end
-function Game:drawTurn()
+function Localgame:drawTurn()
 	love.graphics.setColor(0, 0, 0)
 	love.graphics.rectangle("fill", 530, 280, 250, 50)
 	love.graphics.setColor(1, 1, 1)
@@ -51,7 +51,7 @@ function Game:drawTurn()
 	end
 end
 
-function Game:drawBoard()
+function Localgame:drawBoard()
 	for x, v in pairs(self.bord) do 
 		for y, w in pairs(self.bord[x]) do 
 			if w == 1 then love.graphics.setColor(0, 0, 1) end
@@ -62,7 +62,7 @@ function Game:drawBoard()
 	end
 end
 
-function Game:drawCheck()
+function Localgame:drawCheck()
 	for x, v in pairs(self.bord) do 
 		for y, w in pairs(self.bord[x]) do 
 			if w == 0 then return end
@@ -71,7 +71,7 @@ function Game:drawCheck()
 	self.win = 3
 end
 
-function Game:keypressed(key)
+function Localgame:keypressed(key)
 	local x = tonumber(key)
 	if x ~= nil and self.win == 0 then 
 		for i = 6, 1, -1 do 

@@ -26,30 +26,54 @@ function diagonalWin(field)
 end
 
 function diagonalWin2(field) 
-    boardHeight = 7
+    local boardHeight = 7
     for k, v in pairs(field) do
-        local x, y = k, 1
+        local x = k
         local dia1 = ''
 
-        if x >= 2 then end 
+        if x >= 2 then --anders kan er geen diagonaal zijn
+            for y = 1, boardHeight, 1 do --hij gaat hier naar beneden
+                if y ~= boardHeight and x > 0 then
+                    dia1 = dia1 .. field[x][y] -- voegt toe aan de string
+                    x = x - 1 -- 1 naar links
+                end
+            end
+        end 
         
         if string.match(dia1, '1111') then
             print("blauw heeft gewonnen dia")
+            return
         end
         if string.match(dia1, '2222') then
             print("rood heeft gewonnen dia")
+            return
         end
 
+
+    end
+    for j = #field, 1, -1 do
         dia2 = ''
-        
+
+        if j <= 6 then --anders kan er geen diagonaal zijn
+            for y = 1, boardHeight, 1 do --hij gaat hier naar beneden
+                if y ~= boardHeight and j > 0 then
+                    print(" j " .. j)
+                    dia2 = dia2 .. field[j][y] -- voegt toe aan de string
+                    j = j - 1 -- 1 naar links
+                    print (dia2)
+                end
+            end
+        end 
+
         if string.match(dia2, '1111') then
             print("blauw heeft gewonnen dia")
+            return
         end
         if string.match(dia2, '2222') then
             print("rood heeft gewonnen dia")
+            return
         end
     end
-    
     
 end
 

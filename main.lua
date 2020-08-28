@@ -48,3 +48,29 @@ function love.draw()
 	end
 end
 
+function arrayToBoard(field) 
+    stringMessage = new String(">>> :black_large_square::zero::one::two::three::four::five::six:\n");
+    heightNumber = new String();
+    boardHeight = 7
+    boardLenght = 8
+    for x = 1, boardHeight, 1 do
+        heightNumber = wordNumberArray[x];
+        stringMessage += heightNumber;
+        for y = 1, boardLenght, 1) do
+            if field[x][y] == 0 then
+                stringMessage += ":white_large_square:";
+                amountEmptyPlaces = amountEmptyPlaces + 1
+            elseif field[x][y] == 1 then
+                stringMessage += ":blue_circle:";
+            else 
+                stringMessage += ":red_circle:";
+            end
+        end
+        stringMessage += "\n";
+    end
+    if amountEmptyPlaces == 0 then
+        stringMessage += "\nThe game is a draw.";
+    else
+        amountEmptyPlaces = 0;
+    end
+end

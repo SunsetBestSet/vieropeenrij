@@ -31,12 +31,12 @@ function diagonalWin2(field)
         local x = k
         local dia1 = ''
 
-        if x >= 2 then 
-            for y = 1, boardHeight, 1 do 
+        if x >= 2 then --anders kan er geen diagonaal zijn
+            for y = 1, boardHeight, 1 do --hij gaat hier naar beneden
                 if y ~= boardHeight and x > 0 then
                     print("x = " .. x)
-                    dia1 = dia1 .. field[x][y]
-                    x = x - 1
+                    dia1 = dia1 .. field[x][y] -- voegt toe aan de string
+                    x = x - 1 -- 1 naar links
                     print (dia1)
                 end
             end

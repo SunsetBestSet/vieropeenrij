@@ -1,22 +1,40 @@
+--[[
+
+SUPER VIER OP EEN RIJ
+
+This game uses sounds from freesounds:
+click.wav by THE_bizniss (https://freesound.org/people/THE_bizniss/sounds/39562/)
+
+]]
+
+-- require libs
 Object = require "libs/classic"
 sock = require "libs/sock"
 bitser = require "libs/bitser"
-suit = require "suit"
+suit = require "libs/suit"
 
+-- require game files 
 require "Game"
 require "Localgame"
-require "Client"
+require "Join"
+require "Host"
 require "Lobby"
 require "checkWin"
 require "super"
 
 function love.load()
-	love.graphics.setBackgroundColor(0.9, 0.9, 0.9)
-	winFont = love.graphics.newFont("assets/fonts/monogram_extended.ttf", 50)
-	love.graphics.setFont(winFont)
-	love.window.setTitle("Vier Op Een Rij")
 	screen = "startmenu"
+	love.graphics.setBackgroundColor(0.9, 0.9, 0.9)
+
+	loadAssets()
+end
+
+function loadAssets()
+	winFont = love.graphics.newFont("assets/fonts/monogram_extended.ttf", 50)
+	defaultFont = love.graphics.newFont("assets/fonts/monogram_extended.ttf", 30)
 	sound = love.audio.newSource("assets/sounds/click.wav", "static")
+
+	love.graphics.setFont(defaultFont)
 end
 
 function love.keypressed(key)

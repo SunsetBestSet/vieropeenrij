@@ -1,7 +1,11 @@
-Object = require "classic"
+Object = require "libs/classic"
+sock = require "libs/sock"
+bitser = require "libs/bitser"
 
 require "Game"
 require "Localgame"
+require "Client"
+require "Lobby"
 require "checkWin"
 require "super"
 
@@ -17,11 +21,21 @@ function love.keypressed(key)
 		localgame:keypressed(key)
 	elseif key == 's' then 
 		localgame = Localgame() -- start Localgame
+	elseif key == 'l' then
+		lobby = Lobby() --creates lobby
 	end
 end
 
 function love.draw()
 	if screen == "localgame" then 
 		localgame:draw()
+	elseif screen == "lobby" then
+		lobby:draw()
+	end
+end
+
+function love.update()
+	if screen == "lobby" then 
+		lobby:update()
 	end
 end

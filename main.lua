@@ -19,6 +19,7 @@ require "Localgame"
 require "Join"
 require "Host"
 require "Lobby"
+require "Multigame"
 require "checkWin"
 require "super"
 
@@ -57,6 +58,14 @@ function love.draw(dt)
 		localgame:draw()
 	elseif screen == "lobby" then
 		lobby:draw()
+	elseif screen == "multigame" then
+		print(lobby.type)
+		if lobby.type == "host" then
+			lobby.host.game:draw()
+		elseif lobby.type == "join" then
+			lobby.join.game:draw()
+			print("a")
+		end
 	end
 	suit.draw(dt)
 end
@@ -64,5 +73,11 @@ end
 function love.update()
 	if screen == "lobby" then 
 		lobby:update()
+	elseif screen == "multigame" then
+		if lobby.type == "host" then
+			lobby.host.game:update()
+		elseif lobby.type == "join" then
+			lobby.join.game:update()
+		end
 	end
 end

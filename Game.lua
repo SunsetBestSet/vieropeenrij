@@ -50,7 +50,7 @@ function Game:drawTurn()
 end
 
 function Game:drawBoard()
-	for x, v in pairs(self.bord) do 
+	for x, v in pairs(self.bord or {}) do 
 		for y, w in pairs(self.bord[x]) do 
 			if w == 1 then love.graphics.setColor(0, 0, 1) end
 			if w == 2 then love.graphics.setColor(1, 0, 0) end
@@ -60,7 +60,7 @@ function Game:drawBoard()
 	end
 end
 
-function Game:drawCheck()
+function Game:tieCheck()
 	for x, v in pairs(self.bord) do 
 		for y, w in pairs(self.bord[x]) do 
 			if w == 0 then return end

@@ -20,7 +20,7 @@ function Localgame:keypressed(key)
 						self.turn = 1 
 					end 
 
-					self:drawCheck()
+					self:tieCheck()
 					self:diaWin(self.bord)
 					self:verticalWin(self.bord)
 					self:horizontalWin(self.bord)

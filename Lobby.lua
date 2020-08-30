@@ -4,6 +4,8 @@ function Lobby:new()
 	self.buttons = {"Host a game", "Join a game"}
 	screen = "lobby"
 	self.screen = "hostjoin"
+	self.connecttxt = "Connecting..."
+	self.type = ""
 end
 
 function Lobby:draw()
@@ -12,7 +14,8 @@ function Lobby:draw()
 		love.graphics.setColor(0,0,0)
 		love.graphics.print("Server initiated",0,0)
 	elseif self.screen == "join" then
-		love.graphics.print("Connecting...",0,0)
+		love.graphics.setColor(0,0,0)
+		love.graphics.print(self.connecttxt,0,0)
 	end
 end
 
@@ -23,10 +26,14 @@ function Lobby:update()
 				love.audio.play(sound)
 				if self.buttons[i] == "Host a game" then
 					self.screen = "host"
+					self.type = "host"
 					self.host = Host()
+					print("host")
 				elseif self.buttons[i] == "Join a game" then
 					self.screen = "join"
+					self.type = "join"
 					self.join = Join()
+					print("join")
 				end
 			end
 		end

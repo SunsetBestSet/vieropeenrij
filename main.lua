@@ -59,12 +59,10 @@ function love.draw(dt)
 	elseif screen == "lobby" then
 		lobby:draw()
 	elseif screen == "multigame" then
-		print(lobby.type)
 		if lobby.type == "host" then
 			lobby.host.game:draw()
 		elseif lobby.type == "join" then
 			lobby.join.game:draw()
-			print("a")
 		end
 	end
 	suit.draw(dt)

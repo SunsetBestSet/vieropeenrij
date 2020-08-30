@@ -33,7 +33,9 @@ function Host:draw()
 end
 
 function Host:initGame()
+	-- sends message to client to start the game
 	self.server:sendToAll("startGame", true)
-	self.game = Multigame(1)
-	screen = "multigame"
+	print(self.server:getTotalSentPackets()) -- this prints "1" if the message above is sent
+	self.game = Multigame(1) -- creates game
+	screen = "multigame" -- sets screen to multigame
 end

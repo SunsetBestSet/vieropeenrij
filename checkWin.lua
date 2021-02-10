@@ -1,5 +1,12 @@
+function Game:checkWin(field)
+    self:tieCheck()
+    self:diaWin(field)
+    self:verticalWin(field)
+    self:horizontalWin(field)
+end
 
-function Localgame:diaWin(field) 
+
+function Game:diaWin(field) 
     local boardHeight = 7
     for x = 2, #field + 2, 1 do
         local dia1 = ''
@@ -49,7 +56,7 @@ function Localgame:diaWin(field)
 
 end
 
-function Localgame:verticalWin(field) 
+function Game:verticalWin(field) 
     local previousPosition = 0
     local boardLenght = 8
     local boardHeight = 7
@@ -87,7 +94,7 @@ function Localgame:verticalWin(field)
     end
 end
 
-function Localgame:horizontalWin(field) 
+function Game:horizontalWin(field) 
     local previousPosition = 0
     local boardLenght = 8
     local boardHeight = 7

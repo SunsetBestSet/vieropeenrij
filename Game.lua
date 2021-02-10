@@ -1,7 +1,15 @@
 Game = Object:extend()
 
-function Game:new()
-
+function Game:new(p)
+	self:setupBoard()
+	self.turn = 1
+	screen = "game"
+	if p == 1 then 
+		self.ai = true
+	else
+		self.ai = false
+	end
+	self.canMove = true
 end
 
 function Game:setupBoard()
@@ -67,4 +75,70 @@ function Game:tieCheck()
 		end
 	end
 	self.win = 3
+end
+
+function Game:keypressed(key)
+	if self.ai == false then 
+		local x = tonumber(key)
+		if x ~= nil and self.win == 0 then 
+			for i = 6, 1, -1 do 
+				if x > 0 and x < 8 and self.canMove then 
+					if self.bord[x][i] == 0 then 
+						self.bord[x][i] = self.turn
+
+						if self.turn == 1 then 
+							self.turn = 2 
+						elseif self.turn == 2 then
+							self.turn = 1 
+						end 
+
+						self:checkWin(self.bord)
+
+						if self.ai then 
+							self:AITurn()
+						end
+
+						return
+					end 
+				end
+			end
+		end
+	end
+
+	if key == 'r' then
+
+		self:setupBoard()
+
+	end
+end
+
+function Game:AITurn()
+
+end
+
+function Game:minimax(node, depth, maximizingPlayer)
+	--[[
+		if depth = 0 or node is a terminal node then
+        	return the heuristic value of node
+   		if maximizingPlayer then
+        	value := −∞
+        	for each child of node do
+            	value := max(value, minimax(child, depth − 1, FALSE))
+       		return value
+    	else (* minimizing player *)
+        	value := +∞
+	        for each child of node do
+	            value := min(value, minimax(child, depth − 1, TRUE))
+	        return value
+	        ]]
+	if depth == 0 or node.isTerminal then
+		return node.value
+	end
+
+	if maximizingPlayer then 
+		node.value = math.inf
+
+	else -- minimizing player
+
+	end
 end

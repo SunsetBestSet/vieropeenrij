@@ -15,17 +15,11 @@ suit = require "libs/suit"
 
 -- require game files 
 require "Game"
-require "Localgame"
-require "Join"
-require "Host"
-require "Lobby"
-require "Multigame"
 require "checkWin"
-require "super"
 
 function love.load()
-	screen = "startmenu"
 	love.graphics.setBackgroundColor(0.9, 0.9, 0.9)
+	screen = "startscreen"
 
 	loadAssets()
 end
@@ -39,43 +33,25 @@ function loadAssets()
 end
 
 function love.keypressed(key)
-	if screen == "localgame" then 
-		localgame:keypressed(key)
-	elseif key == 's' then 
-		localgame = Localgame() -- start Localgame
-	elseif key == 'l' then
-		lobby = Lobby() --creates lobby
+	if screen == "game" then 
+		game:keypressed(key)
 	end
 	suit.keypressed(key)
 end
 
-function love.textinput(t)
-	suit.textinput(t)
-end
-
 function love.draw(dt)
-	if screen == "localgame" then 
-		localgame:draw()
-	elseif screen == "lobby" then
-		lobby:draw()
-	elseif screen == "multigame" then
-		if lobby.type == "host" then
-			lobby.host.game:draw()
-		elseif lobby.type == "join" then
-			lobby.join.game:draw()
-		end
+	if screen == "game" then 
+		game:draw()
 	end
 	suit.draw(dt)
 end
 
 function love.update()
-	if screen == "lobby" then 
-		lobby:update()
-	elseif screen == "multigame" then
-		if lobby.type == "host" then
-			lobby.host.game:update()
-		elseif lobby.type == "join" then
-			lobby.join.game:update()
+	if screen == "startscreen" then 
+		if suit.Button("Play against the computer", 50,100, 300,30).hit then
+			game = Game(1)
+		elseif suit.Button("Play against a friend", 450,100, 300,30).hit then
+			game = Game(2)
 		end
 	end
 end
